@@ -20,10 +20,10 @@ class App extends Component {
         <Header />
         <div className="row">
           <div className="col s-4">
-            <Form />
+            <AddNewToDo />
           </div>
           <div className="col s-8">
-            <List />
+            <ViewTodos />
           </div>
         </div>
       </div>
