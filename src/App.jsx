@@ -8,22 +8,45 @@ class App extends Component {
     super(props);
     this.state = { 
       toDoObj: {
-        priority: 1,
+        priority: '3',
         clicked: false,
         textArea: '',
       },
       toDoArray: [],
       }
+      this.handleInput = this.handleInput.bind(this);
+      this.handleClick = this.handleClick.bind(this);
     }
 
-  render() {
+  handleInput(event){
+    var  objCopy = JSON.parse(JSON.stringify(this.state.toDoObj));
+    const {name, value} = event.target;
+    objCopy[name] = value;
 
+    this.setState({
+      toDoObj: objCopy,
+    });
+  }  
+
+  handleClick(){
+  let newArray = this.state.toDoArray.concat(this.state.toDoObj);
+    this.setState({
+      toDoObj: {
+        priority: '3',
+        clicked: false,
+        textArea: '',
+      },
+      toDoArray: newArray,
+    })
+  }
+
+  render() {
     return (
       <div className='container'>
-        <Header />
+        <Header/>
         <div className="row">
           <div className="col-4">
-            <AddNewTodo />
+            <AddNewTodo handleInput={this.handleInput} handleClick={this.handleClick} priority={this.state.toDoObj.priority} textArea={this.state.toDoObj.textArea}/>
           </div>
           <div className="col-8">
             <ViewTodos />
