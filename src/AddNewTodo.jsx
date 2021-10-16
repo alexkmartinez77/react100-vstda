@@ -14,13 +14,13 @@ export class AddNewTodo extends React.Component{
               <Label inputName="wantTo" innerText="How much of a priority is this?"/>
               <div className="row">
                 <div className="col-10 offset-1">
-                  <textarea className="form-control" name="textArea" type="text" defaultValue={this.props.textArea} onChange={(e) => this.props.handleInput(e)}/>
+                  <textarea className="create-todo-text form-control" name="textArea" type="text" defaultValue={this.props.textArea} onChange={(e) => this.props.handleInput(e)}/>
                 </div>
               </div>
               <Label inputName="priority" innerText="Select a priority"/>
               <div className="row">
                 <div className="col-10 offset-1">
-                  <select className="form-control" name="priority" defaultValue={this.props.priority} onChange={(e) => this.props.handleInput(e)}>
+                  <select className="create-todo-priority form-control" name="priority" defaultValue={this.props.priority} onChange={(e) => this.props.handleInput(e)}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>

@@ -10,7 +10,7 @@ class App extends Component {
       toDoObj: {
         priority: '3',
         clicked: false,
-        textArea: 'Text Area',
+        textArea: '',
       },
       toDoArray: [],
       }
@@ -29,9 +29,16 @@ class App extends Component {
   }  
 
   handleClick(){
-
+  let newArray = this.state.toDoArray.concat(this.state.toDoObj);
+    this.setState({
+      toDoObj: {
+        priority: '3',
+        clicked: false,
+        textArea: '',
+      },
+      toDoArray: newArray,
+    })
   }
-
 
   render() {
     return (
