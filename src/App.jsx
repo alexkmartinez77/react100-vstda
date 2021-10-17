@@ -20,6 +20,7 @@ class App extends Component {
       this.handleInput = this.handleInput.bind(this);
       this.handleClick = this.handleClick.bind(this);
       this.updateObject = this.updateObject.bind(this);
+      this.deleteObject = this.deleteObject.bind(this);
     }
 
   handleInput(event){
@@ -46,7 +47,16 @@ class App extends Component {
     this.setState({
       toDoArray: arrayCopy,
     });
-  }  
+  }
+
+  deleteObject(i){
+    let arrayCopy = JSON.parse(JSON.stringify(this.state.toDoArray));
+    arrayCopy.splice(i,1)
+    
+    this.setState({
+      toDoArray: arrayCopy,
+    });
+  }
 
 
 
@@ -64,7 +74,7 @@ class App extends Component {
           <div className="col-8">
           <div className="row card bg-light">
             <ColumnHeader columnHeader="View Todos"/>
-            {this.state.toDoArray.length == 0 ? <Welcome /> : this.state.toDoArray.map((todo, i)=><ViewTodos key={i} index={i} toDoObj={todo} updateObject={this.updateObject}/>)}
+            {this.state.toDoArray.length == 0 ? <Welcome /> : this.state.toDoArray.map((todo, i)=><ViewTodos key={i} index={i} toDoObj={todo} updateObject={this.updateObject} deleteObject={this.deleteObject}/>)}
             </div>
           </div>
         </div>
