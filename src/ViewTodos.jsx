@@ -1,8 +1,10 @@
 import React from 'react';
 
 export class ViewTodos extends React.Component{
+
   render() {
-    const {priority, clicked, textArea} = this.props.toDoObj;
+    const {priority, completed, textArea} = this.props.toDoObj;
+    let i = this.props.index;
     let bgColor;
 
     switch(priority){
@@ -21,7 +23,10 @@ export class ViewTodos extends React.Component{
 
     return(
       <div className={bgColor}>
-        {textArea}
+        <input className="float-left" name="completed" type="checkbox" checked={completed} onChange={(e) => this.props.updateObject(e, i)}/>
+        <span>{textArea}</span><span>{i}</span>
+        <a className="float-right">Edit</a>
+        <a className="float-right">Delete</a>
       </div>
     )
   }

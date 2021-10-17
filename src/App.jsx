@@ -11,7 +11,7 @@ class App extends Component {
     this.state = { 
       toDoObj: {
         priority: '3',
-        clicked: false,
+        completed: false,
         textArea: '',
         editForm: false,
       },
@@ -19,10 +19,11 @@ class App extends Component {
       }
       this.handleInput = this.handleInput.bind(this);
       this.handleClick = this.handleClick.bind(this);
+      this.updateObject = this.updateObject.bind(this);
     }
 
   handleInput(event){
-    var  objCopy = JSON.parse(JSON.stringify(this.state.toDoObj));
+    let objCopy = JSON.parse(JSON.stringify(this.state.toDoObj));
     const {name, value} = event.target;
     objCopy[name] = value;
 
@@ -32,16 +33,22 @@ class App extends Component {
   }  
 
   handleClick(){
-  let newArray = this.state.toDoArray.concat(this.state.toDoObj);
+    let newArray = this.state.toDoArray.concat(this.state.toDoObj);
+      this.setState({
+        toDoArray: newArray,
+      })
+    }
+  
+  updateObject(e, i){
+    let arrayCopy = JSON.parse(JSON.stringify(this.state.toDoArray));
+    arrayCopy[i].completed = !arrayCopy[i].completed
+      
     this.setState({
-      toDoObj: {
-        priority: '3',
-        clicked: false,
-        textArea: '',
-      },
-      toDoArray: newArray,
-    })
-  }
+      toDoArray: arrayCopy,
+    });
+  }  
+
+
 
   render() {
     return (
@@ -57,7 +64,7 @@ class App extends Component {
           <div className="col-8">
           <div className="row card bg-light">
             <ColumnHeader columnHeader="View Todos"/>
-            {this.state.toDoArray.length == 0 ? <Welcome /> : this.state.toDoArray.map((todo, i)=><ViewTodos key={i} toDoObj={todo}/>)}
+            {this.state.toDoArray.length == 0 ? <Welcome /> : this.state.toDoArray.map((todo, i)=><ViewTodos key={i} index={i} toDoObj={todo} updateObject={this.updateObject}/>)}
             </div>
           </div>
         </div>
