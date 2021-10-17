@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import AddNewTodo from './AddNewTodo';
 import ViewTodos from './ViewTodos';
+import ColumnHeader from './ColumnHeader';
 
 class App extends Component {
   constructor(props){
@@ -46,10 +47,18 @@ class App extends Component {
         <Header/>
         <div className="row">
           <div className="col-4">
-            <AddNewTodo handleInput={this.handleInput} handleClick={this.handleClick} priority={this.state.toDoObj.priority} textArea={this.state.toDoObj.textArea}/>
+            <div className="row card bg-light">
+              <ColumnHeader columnHeader="Add New Todo"/>
+              <AddNewTodo handleInput={this.handleInput} handleClick={this.handleClick} priority={this.state.toDoObj.priority} textArea={this.state.toDoObj.textArea}/>
+            </div>
           </div>
           <div className="col-8">
-            <ViewTodos />
+          <div className="row card bg-light">
+            <ColumnHeader columnHeader="View Todos"/>
+              {this.state.toDoArray.map((todo, i)=>
+                <ViewTodos key={i} toDoObj={todo}/>
+              )}
+            </div>
           </div>
         </div>
       </div>
