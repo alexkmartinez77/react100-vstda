@@ -3,6 +3,7 @@ import Header from './Header';
 import AddNewTodo from './AddNewTodo';
 import ViewTodos from './ViewTodos';
 import ColumnHeader from './ColumnHeader';
+import Welcome from './Welcome';
 
 class App extends Component {
   constructor(props){
@@ -56,9 +57,7 @@ class App extends Component {
           <div className="col-8">
           <div className="row card bg-light">
             <ColumnHeader columnHeader="View Todos"/>
-            {this.state.toDoArray.map((todo, i)=>
-              <ViewTodos key={i} toDoObj={todo}/>
-            )}
+            {this.state.toDoArray.length == 0 ? <Welcome /> : this.state.toDoArray.map((todo, i)=><ViewTodos key={i} toDoObj={todo}/>)}
             </div>
           </div>
         </div>

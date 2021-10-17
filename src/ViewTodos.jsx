@@ -1,5 +1,4 @@
 import React from 'react';
-import ColumnHeader from './ColumnHeader';
 
 export class ViewTodos extends React.Component{
   render() {
@@ -16,7 +15,7 @@ export class ViewTodos extends React.Component{
       case '3':
         bgColor = "bg-success";
         break;
-      default:
+      default:Add
         bgColor = "bg-white";
     }
 
