@@ -12,6 +12,7 @@ class App extends Component {
         priority: '3',
         clicked: false,
         textArea: '',
+        editForm: false,
       },
       toDoArray: [],
       }
@@ -55,9 +56,9 @@ class App extends Component {
           <div className="col-8">
           <div className="row card bg-light">
             <ColumnHeader columnHeader="View Todos"/>
-              {this.state.toDoArray.map((todo, i)=>
-                <ViewTodos key={i} toDoObj={todo}/>
-              )}
+            {this.state.toDoArray.map((todo, i)=>
+              <ViewTodos key={i} toDoObj={todo}/>
+            )}
             </div>
           </div>
         </div>
