@@ -3,7 +3,7 @@ import React from 'react';
 export class ViewTodos extends React.Component{
 
   render() {
-    const {priority, completed, textArea} = this.props.toDoObj;
+    const {priority, completed, textArea, edit} = this.props.toDoObj;
     let i = this.props.index;
     let bgColor;
 
@@ -22,13 +22,23 @@ export class ViewTodos extends React.Component{
     }
 
     return(
+      
       <div className={bgColor}>
-        <input className="float-left" type="checkbox" checked={completed} onChange={(e) => this.props.updateObject(e, i)}/>
-        <span>{textArea}</span><span>{i}</span>
-        <a className="float-right ml-2" style={{color: 'blue', cursor: 'pointer'}} onClick={() => this.props.deleteObject(i)}>Delete</a>
-        <a className="float-right" style={{color: 'blue', cursor: 'pointer'}}>Edit</a>
+        {
+          edit 
+          ? 
+          "form"
+          : 
+          <div>
+            <input className="float-left" type="checkbox" checked={completed} onChange={() => this.props.updateObject(i)}/>
+            <span>{textArea}</span><span>{i}</span>
+            <a className="delete-todo float-right ml-2" style={{color: 'blue', cursor: 'pointer'}} onClick={() => this.props.deleteObject(i)}>Delete</a>
+            <a className="edit-todo float-right" style={{color: 'blue', cursor: 'pointer'}} onClick={() => this.props.editSaveToggle(i)}>Edit</a>
+          </div>
+        }
       </div>
     )
+    
   }
 }
 

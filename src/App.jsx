@@ -13,14 +13,15 @@ class App extends Component {
         priority: '3',
         completed: false,
         textArea: '',
-        editForm: false,
+        edit: false,
       },
       toDoArray: [],
       }
-      this.handleInput = this.handleInput.bind(this);
-      this.handleClick = this.handleClick.bind(this);
-      this.updateObject = this.updateObject.bind(this);
-      this.deleteObject = this.deleteObject.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.updateObject = this.updateObject.bind(this);
+    this.deleteObject = this.deleteObject.bind(this);
+    this.editSaveToggle = this.editSaveToggle.bind(this);
     }
 
   handleInput(event){
@@ -40,7 +41,7 @@ class App extends Component {
       })
     }
   
-  updateObject(e, i){
+  updateObject(i){
     let arrayCopy = JSON.parse(JSON.stringify(this.state.toDoArray));
     arrayCopy[i].completed = !arrayCopy[i].completed
       
@@ -52,12 +53,20 @@ class App extends Component {
   deleteObject(i){
     let arrayCopy = JSON.parse(JSON.stringify(this.state.toDoArray));
     arrayCopy.splice(i,1)
-    
+
     this.setState({
       toDoArray: arrayCopy,
     });
   }
 
+  editSaveToggle(i){
+    let arrayCopy = JSON.parse(JSON.stringify(this.state.toDoArray));
+    arrayCopy[i].edit = !arrayCopy[i].edit
+      
+    this.setState({
+      toDoArray: arrayCopy,
+    });
+  }
 
 
   render() {
@@ -74,7 +83,7 @@ class App extends Component {
           <div className="col-8">
           <div className="row card bg-light">
             <ColumnHeader columnHeader="View Todos"/>
-            {this.state.toDoArray.length == 0 ? <Welcome /> : this.state.toDoArray.map((todo, i)=><ViewTodos key={i} index={i} toDoObj={todo} updateObject={this.updateObject} deleteObject={this.deleteObject}/>)}
+            {this.state.toDoArray.length == 0 ? <Welcome /> : this.state.toDoArray.map((todo, i)=><ViewTodos key={i} index={i} toDoObj={todo} updateObject={this.updateObject} deleteObject={this.deleteObject} editSaveToggle={this.editSaveToggle}/>)}
             </div>
           </div>
         </div>
