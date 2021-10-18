@@ -1,6 +1,5 @@
 import React from 'react';
 import Label from './Label'
-import ColumnHeader from './ColumnHeader';
 
 
 export class AddNewTodo extends React.Component{
@@ -33,15 +32,9 @@ export class AddNewTodo extends React.Component{
               </button>
             </div>
           </div>
-        <div className="row text-center">
-          <div className="col-12">
-            <h4 name="output" id="output"></h4>
-          </div>
-        </div>
       </div>
     )
   }
-
 }
 
 export default AddNewTodo;

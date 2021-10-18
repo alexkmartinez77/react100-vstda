@@ -18,6 +18,7 @@ class App extends Component {
       toDoArray: [],
       }
     this.handleInput = this.handleInput.bind(this);
+    this.handleInputUpdate = this.handleInputUpdate.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.updateObject = this.updateObject.bind(this);
     this.deleteObject = this.deleteObject.bind(this);
@@ -31,6 +32,16 @@ class App extends Component {
 
     this.setState({
       toDoObj: objCopy,
+    });
+  }  
+
+  handleInputUpdate(event, i){
+    const {name, value} = event.target;
+    let arrayCopy = JSON.parse(JSON.stringify(this.state.toDoArray));
+    arrayCopy[i][name] = value;
+
+    this.setState({
+      toDoArray: arrayCopy,
     });
   }  
 
@@ -60,6 +71,7 @@ class App extends Component {
   }
 
   editSaveToggle(i){
+    console.log(i);
     let arrayCopy = JSON.parse(JSON.stringify(this.state.toDoArray));
     arrayCopy[i].edit = !arrayCopy[i].edit
       
@@ -83,7 +95,7 @@ class App extends Component {
           <div className="col-8">
           <div className="row card bg-light">
             <ColumnHeader columnHeader="View Todos"/>
-            {this.state.toDoArray.length == 0 ? <Welcome /> : this.state.toDoArray.map((todo, i)=><ViewTodos key={i} index={i} toDoObj={todo} updateObject={this.updateObject} deleteObject={this.deleteObject} editSaveToggle={this.editSaveToggle}/>)}
+            {this.state.toDoArray.length == 0 ? <Welcome /> : this.state.toDoArray.map((todo, i)=><ViewTodos key={i} index={i} toDoObj={todo} updateObject={this.updateObject} deleteObject={this.deleteObject} editSaveToggle={this.editSaveToggle} handleInputUpdate={this.handleInputUpdate}/>)}
             </div>
           </div>
         </div>
