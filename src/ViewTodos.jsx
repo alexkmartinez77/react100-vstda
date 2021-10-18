@@ -10,13 +10,13 @@ export class ViewTodos extends React.Component{
 
     switch(priority){
       case '1':
-        bgColor = "bg-danger";
+        bgColor = "bg-red";
         break;
       case '2':
-        bgColor = "bg-warning";
+        bgColor = "bg-yellow";
         break;
       case '3':
-        bgColor = "bg-success";
+        bgColor = "bg-green";
         break;
       default:Add
         bgColor = "bg-white";
@@ -24,10 +24,11 @@ export class ViewTodos extends React.Component{
 
     return(
       
-      <div className={bgColor}>
+      <div className={` ${bgColor}`}>
         {
           edit
           ?
+          /* Form */
           <div>
             <Label inputName="textArea" innerText="Description"/>
             <div className="row">
@@ -48,20 +49,18 @@ export class ViewTodos extends React.Component{
             <div className="row my-5 text-center">
               <div className="col-12">
                 <button className="btn btn-primary" name="submit" onClick={() => this.props.updateObject(i, 'edit')}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-calculator" viewBox="0 0 16 16">
-                    <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
-                    <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4z"/>
-                  </svg>{" Save "}
+                  <span className="material-icons align-middle">save</span>{" Save "}
                 </button>
               </div>
             </div>
           </div>
           : 
+          /* Todo Item */
           <div>
-            <input className="float-left" type="checkbox" checked={completed} onChange={() => this.props.updateObject(i, 'completed')}/>
-            <span>{textArea}</span><span>{i}</span>
-            <a className="delete-todo float-right ml-2" style={{color: 'blue', cursor: 'pointer'}} onClick={() => this.props.deleteObject(i)}>Delete</a>
-            <a className="edit-todo float-right" style={{color: 'blue', cursor: 'pointer'}} onClick={() => this.props.updateObject(i, 'edit')}>Edit</a>
+            <input className="align-middle ml-2" type="checkbox" checked={completed} onChange={() => this.props.updateObject(i, 'completed')}/>
+            <span className="align-middle">{textArea}</span>
+            <a className=" align-middle delete-todo float-right ml-2 pointer" onClick={() => this.props.deleteObject(i)}><span className="material-icons align-middle">delete_outline</span></a>
+            <a className=" align-middle edit-todo float-right pointer" onClick={() => this.props.updateObject(i, 'edit')}><span className="material-icons align-middle">edit</span></a>
           </div>
         }
       </div>
