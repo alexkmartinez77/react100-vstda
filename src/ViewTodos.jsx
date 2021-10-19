@@ -24,7 +24,7 @@ export class ViewTodos extends React.Component{
 
     return(
       
-      <div className={` ${bgColor}`}>
+      <div className={`${bgColor} p-2`}>
         {
           edit
           ?
@@ -33,13 +33,13 @@ export class ViewTodos extends React.Component{
             <Label inputName="textArea" innerText="Description"/>
             <div className="row">
               <div className="col-10 offset-1">
-                <textarea className="create-todo-text form-control" name="textArea" type="text" defaultValue={textArea} onChange={(e) => this.props.handleInputUpdate(e, i)}/>
+                <textarea className="update-todo-text form-control" name="textArea" type="text" defaultValue={textArea} onChange={(e) => this.props.handleInputUpdate(e, i)}/>
               </div>
             </div>
             <Label inputName="priority" innerText="Priority"/>
             <div className="row">
               <div className="col-10 offset-1">
-                <select className="form-control" name="priority" defaultValue={priority} onChange={(e) => this.props.handleInputUpdate(e, i)}>
+                <select className="update-todo-priority form-control" name="priority" defaultValue={priority} onChange={(e) => this.props.handleInputUpdate(e, i)}>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -48,7 +48,7 @@ export class ViewTodos extends React.Component{
             </div>
             <div className="row my-5 text-center">
               <div className="col-12">
-                <button className="btn btn-primary" name="submit" onClick={() => this.props.updateObject(i, 'edit')}>
+                <button className="update-todo btn btn-primary" name="submit" onClick={() => this.props.updateObject(i, 'edit')}>
                   <span className="material-icons align-middle">save</span>{" Save "}
                 </button>
               </div>
@@ -57,10 +57,10 @@ export class ViewTodos extends React.Component{
           : 
           /* Todo Item */
           <div>
-            <input className="align-middle ml-2" type="checkbox" checked={completed} onChange={() => this.props.updateObject(i, 'completed')}/>
+            <input className="align-middle ml-1" type="checkbox" checked={completed} onChange={() => this.props.updateObject(i, 'completed')}/>
             <span className="align-middle">{textArea}</span>
-            <a className=" align-middle delete-todo float-right ml-2 pointer" onClick={() => this.props.deleteObject(i)}><span className="material-icons align-middle">delete_outline</span></a>
-            <a className=" align-middle edit-todo float-right pointer" onClick={() => this.props.updateObject(i, 'edit')}><span className="material-icons align-middle">edit</span></a>
+            <a className="delete-todo align-middle float-right ml-2 pointer" onClick={() => this.props.deleteObject(i)}><span className="material-icons align-middle">delete_outline</span></a>
+            <a className="edit-todo align-middle float-right pointer" onClick={() => this.props.updateObject(i, 'edit')}><span className="material-icons align-middle">edit</span></a>
           </div>
         }
       </div>

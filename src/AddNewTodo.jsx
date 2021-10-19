@@ -24,7 +24,7 @@ export class AddNewTodo extends React.Component{
           </div>
           <div className="row my-5 text-center">
             <div className="col-12">
-              <button className="btn btn-primary" name="submit" onClick={() => this.props.handleClick()}>
+              <button className="create-todo btn btn-primary" name="submit" onClick={() => this.props.handleClick()}>
                 <span className="material-icons align-middle">add</span>{" Add "}
               </button>
             </div>

@@ -75,13 +75,13 @@ class App extends Component {
         <Header/>
         <div className="row">
           <div className="col-4">
-            <div className="row card bg-light">
+            <div className="row card bg-grey">
               <ColumnHeader columnHeader="Add New Todo"/>
               <AddNewTodo handleInput={this.handleInput} handleClick={this.handleClick} priority={this.state.toDoObj.priority} textArea={this.state.toDoObj.textArea}/>
             </div>
           </div>
-          <div className="col-8">
-          <div className="row card bg-light">
+          <div className="col-7 offset-1">
+          <div className="row card bg-grey">
             <ColumnHeader columnHeader="View Todos"/>
             {this.state.toDoArray.length == 0 ? <Welcome /> : this.state.toDoArray.map((todo, i)=><ViewTodos key={i} index={i} toDoObj={todo} updateObject={this.updateObject} deleteObject={this.deleteObject} handleInputUpdate={this.handleInputUpdate}/>)}
             </div>
