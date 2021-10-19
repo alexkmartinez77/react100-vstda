@@ -59,8 +59,8 @@ export class ViewTodos extends React.Component{
           <div>
             <input className="align-middle ml-1" type="checkbox" checked={completed} onChange={() => this.props.updateObject(i, 'completed')}/>
             <span className="align-middle">{textArea}</span>
-            <a className="delete-todo align-middle float-right ml-2 pointer" onClick={() => this.props.deleteObject(i)}><span className="material-icons align-middle">delete_outline</span></a>
-            <a className="edit-todo align-middle float-right pointer" onClick={() => this.props.updateObject(i, 'edit')}><span className="material-icons align-middle">edit</span></a>
+            <a title="Delete" className="delete-todo align-middle float-right ml-2 pointer" onClick={() => this.props.deleteObject(i)}><span className="material-icons align-middle">delete_outline</span></a>
+            <a title="Edit" className="edit-todo align-middle float-right pointer" onClick={() => this.props.updateObject(i, 'edit')}><span className="material-icons align-middle">edit</span></a>
           </div>
         }
       </li>

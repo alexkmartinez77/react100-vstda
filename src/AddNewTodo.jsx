@@ -5,7 +5,7 @@ import Label from './Label'
 export class AddNewTodo extends React.Component{
   render() {
     return(
-      <div className="bg-white">
+      <div className="bg-white py-3">
           <Label inputName="wantTo" innerText="I want to..."/>
           <div className="row">
             <div className="col-10 offset-1">
@@ -20,13 +20,6 @@ export class AddNewTodo extends React.Component{
                 <option value="2">Medium</option>
                 <option value="3">High</option>
               </select>
-            </div>
-          </div>
-          <div className="row my-5 text-center">
-            <div className="col-12">
-              <button className="create-todo btn btn-primary" name="submit" onClick={() => this.props.handleClick()}>
-                <span className="material-icons align-middle">add</span>{" Add "}
-              </button>
             </div>
           </div>
       </div>
