@@ -75,13 +75,20 @@ class App extends Component {
         <Header/>
         <div className="row">
           <div className="col-4">
-            <div className="row card bg-grey">
+            <div className="row card alert-secondary">
               <ColumnHeader columnHeader="Add New Todo"/>
-              <AddNewTodo handleInput={this.handleInput} handleClick={this.handleClick} priority={this.state.toDoObj.priority} textArea={this.state.toDoObj.textArea}/>
+              <AddNewTodo handleInput={this.handleInput} priority={this.state.toDoObj.priority} textArea={this.state.toDoObj.textArea}/>
+              <div className="row my-2 text-center">
+                <div className="col">
+                  <button className="create-todo btn btn-primary" name="submit" onClick={() => this.handleClick()}>
+                    <span className="material-icons align-middle">add</span>{" Add "}
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
           <div className="col-7 offset-1">
-          <ul className=" list-group row card bg-grey">
+          <ul className=" list-group row card  alert-secondary">
             <ColumnHeader columnHeader="View Todos"/>
             {this.state.toDoArray.length == 0 ? <Welcome /> : this.state.toDoArray.map((todo, i)=><ViewTodos key={i} index={i} toDoObj={todo} updateObject={this.updateObject} deleteObject={this.deleteObject} handleInputUpdate={this.handleInputUpdate}/>)}
             </ul>
