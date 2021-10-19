@@ -10,13 +10,13 @@ export class ViewTodos extends React.Component{
 
     switch(priority){
       case '1':
-        bgColor = "bg-red";
+        bgColor = "custom-success";
         break;
       case '2':
-        bgColor = "bg-yellow";
+        bgColor = "custom-warning";
         break;
       case '3':
-        bgColor = "bg-green";
+        bgColor = "custom-danger";
         break;
       default:Add
         bgColor = "bg-white";
@@ -24,7 +24,7 @@ export class ViewTodos extends React.Component{
 
     return(
       
-      <div className={`${bgColor} p-2`}>
+      <li className={`list-group-item ${bgColor}`}>
         {
           edit
           ?
@@ -40,9 +40,9 @@ export class ViewTodos extends React.Component{
             <div className="row">
               <div className="col-10 offset-1">
                 <select className="update-todo-priority form-control" name="priority" defaultValue={priority} onChange={(e) => this.props.handleInputUpdate(e, i)}>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
+                  <option value="1">Low</option>
+                  <option value="2">Medium</option>
+                  <option value="3">High</option>
                 </select>
               </div>
             </div>
@@ -63,7 +63,7 @@ export class ViewTodos extends React.Component{
             <a className="edit-todo align-middle float-right pointer" onClick={() => this.props.updateObject(i, 'edit')}><span className="material-icons align-middle">edit</span></a>
           </div>
         }
-      </div>
+      </li>
     )
     
   }

@@ -16,9 +16,9 @@ export class AddNewTodo extends React.Component{
           <div className="row">
             <div className="col-10 offset-1">
               <select className="create-todo-priority form-control" name="priority" defaultValue={this.props.priority} onChange={(e) => this.props.handleInput(e)}>
-                <option value="1">High</option>
+                <option value="1">Low</option>
                 <option value="2">Medium</option>
-                <option value="3">Low</option>
+                <option value="3">High</option>
               </select>
             </div>
           </div>
