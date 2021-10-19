@@ -81,10 +81,10 @@ class App extends Component {
             </div>
           </div>
           <div className="col-7 offset-1">
-          <div className="row card bg-grey">
+          <ul className=" list-group row card bg-grey">
             <ColumnHeader columnHeader="View Todos"/>
             {this.state.toDoArray.length == 0 ? <Welcome /> : this.state.toDoArray.map((todo, i)=><ViewTodos key={i} index={i} toDoObj={todo} updateObject={this.updateObject} deleteObject={this.deleteObject} handleInputUpdate={this.handleInputUpdate}/>)}
-            </div>
+            </ul>
           </div>
         </div>
       </div>
